@@ -1,6 +1,6 @@
 ---
-layout: default
-title: The ups & downs of SaFe for agile at scale
+title: The Ups and Downs of SAFe for Agile at Scale
+date: 2018-12-05
 ---
 
 For large teams, keeping everyone aligned and moving in the same direction can be a real challenge. However, quarterly planning using the SaFe (Scaled Agile Framework) method can be highly effective in solving this issue.
