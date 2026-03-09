@@ -1,5 +1,5 @@
 ---
-title: Insights
+title: Writing
 ---
 
 <!DOCTYPE html>
@@ -10,9 +10,9 @@ title: Insights
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Insights | Amanda Dahl</title>
+<title>Writing | Amanda Dahl</title>
 
-<meta name="description" content="Commentary on AI governance, emerging technologies and digital public infrastructure.">
+<meta name="description" content="Writing, commentary and publications by Amanda Dahl on AI governance, emerging technologies and digital public infrastructure.">
 
 <link rel="stylesheet" href="styles.css">
 
@@ -28,8 +28,7 @@ title: Insights
 
 <nav>
 <a href="/">Home</a>
-<a href="publications.html">Publications & Speaking</a>
-<a href="insights.html">Insights</a>
+<a href="publications.html">Writing</a>
 <a href="contact.html">Contact</a>
 </nav>
 
@@ -37,37 +36,96 @@ title: Insights
 
 <section>
 
+<h2>Writing & Publications</h2>
+
+<p>
+Selected writing on artificial intelligence governance, emerging technology policy and digital public infrastructure.
+</p>
+
+<h3>Papers & Essays</h3>
+
+<ul class="publications">
+
+<li>
+<strong>AI Governance and Public Institutions</strong><br>
+Policy essay examining institutional approaches to governing frontier AI systems.<br>
+<a href="/pdfs/ai-governance-public-institutions.pdf">Download PDF</a>
+</li>
+
+<li>
+<strong>Designing Digital Infrastructure for Public Trust</strong><br>
+Essay on institutional design principles for digital public services.<br>
+<a href="/pdfs/digital-infrastructure-public-trust.pdf">Download PDF</a>
+</li>
+
+<li>
+<strong>AI Prioritisation Systems and Human Agency</strong><br>
+Research note exploring algorithmic prioritisation in welfare systems.<br>
+<a href="/pdfs/ai-prioritisation-human-agency.pdf">Download PDF</a>
+</li>
+
+</ul>
+
+</section>
+
+
+<section>
+
 <h2>Insights</h2>
 
 <p>
-Short reflections and commentary on emerging technologies, AI governance and digital public infrastructure.
+Short commentary and reflections on AI governance, technology policy and institutional challenges in governing emerging technologies.
 </p>
 
-<ul>
+<ul class="blog">
 
 {% for post in site.posts %}
 
 <li>
-<a href="{{ post.url }}">{{ post.title }}</a>
+
+<strong>
+<a href="{{ post.url | relative_url }}">
+{{ post.title }}
+</a>
+</strong>
+
+<br>
+
+<small>
+{{ post.date | date: "%B %d, %Y" }}
+</small>
+
 </li>
 
 {% endfor %}
 
 </ul>
 
-<h3>Example topics</h3>
+</section>
 
-<ul>
-<li>What responsible AI deployment in government actually requires</li>
-<li>The institutional challenges of governing frontier technologies</li>
-<li>Designing digital infrastructure for public trust</li>
+
+<section>
+
+<h2>Speaking & Media</h2>
+
+<ul class="talks">
+
+<li>
+Panel discussion on AI governance at international policy forum (2025)
+</li>
+
+<li>
+Lecture on digital public infrastructure and public trust
+</li>
+
+<li>
+Guest commentary on emerging technology governance
+</li>
+
 </ul>
 
-<p>
-Future articles and commentary will appear here.
-</p>
-
 </section>
+
 
 <footer>
 
