@@ -49,7 +49,17 @@ Short reflections and commentary on emerging technologies, AI governance and dig
 <li>Designing digital infrastructure for public trust</li>
 
 </ul>
+<ul>
 
+{% for post in site.posts %}
+
+<li>
+<a href="{{ post.url }}">{{ post.title }}</a>
+</li>
+
+{% endfor %}
+
+</ul>
 <p>
 Future articles and commentary will appear here.
 </p>
@@ -68,3 +78,4 @@ All views expressed are personal and do not represent the positions of any curre
 
 </body>
 </html>
+
