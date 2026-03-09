@@ -1,5 +1,5 @@
 ---
-title: Capacity management & meticulous feature definition: helping teams do less & deliver more
+title: "Capacity management & meticulous feature definition: helping teams do less & deliver more"
 date: 2019-07-10
 ---
 
