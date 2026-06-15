@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<!--
+  amandadahl.com — single-page site.
+  DEPLOY (GitHub): replace index.html in your repo, commit and push.
+    - GitHub Pages redeploys automatically on push to the configured branch
+      (usually `main`, root or /docs). Keep your /pdfs and dated post files
+      in the repo so the Writing links keep working.
+  TODO before publishing:
+    - Set your LinkedIn URL (marked below).
+    - Set the contact form endpoint (Formspree ID marked below), or keep your
+      existing form handler.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Amanda Dahl — Platforms for creation, play &amp; responsible AI</title>
+<meta name="description" content="Amanda Dahl builds platforms that empower people to create, play and share. A senior technology and public-policy leader across PlayStation, the BBC and two governments, working on creator and developer platforms, personalisation, and responsible AI.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,380;9..144,470;9..144,600&family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0E1A2B; --ink-2:#16293E; --ink-line:#27405A;
+    --paper:#FBF7F0; --paper-2:#F1E9DC;
+    --rose:#EC6A85; --amber:#F4B43F;
+    --slate:#3A4A5B; --mist:#B9C6D4; --snow:#EAF0F6;
+    --maxw:1120px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0; background:var(--paper); color:var(--slate);
+    font-family:"Hanken Grotesk",system-ui,sans-serif;
+    font-size:clamp(1rem,0.95rem + 0.2vw,1.12rem); line-height:1.62; -webkit-font-smoothing:antialiased;}
+  h1,h2,h3{font-family:"Fraunces",Georgia,serif; font-weight:470; line-height:1.05; letter-spacing:-0.01em; color:var(--ink);}
+  a{color:inherit;}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 clamp(20px,5vw,48px);}
+  .eyebrow{font-family:"IBM Plex Mono",monospace; font-size:0.74rem; font-weight:500; letter-spacing:0.2em; text-transform:uppercase; color:var(--rose);}
+  .btn{display:inline-flex; align-items:center; gap:0.55em; cursor:pointer;
+    font-family:"IBM Plex Mono",monospace; font-size:0.82rem; letter-spacing:0.04em; text-decoration:none;
+    padding:0.85em 1.3em; border-radius:999px; border:1.5px solid transparent;
+    transition:transform .15s ease, background .2s ease, border-color .2s ease;}
+  .btn:focus-visible{outline:3px solid var(--amber); outline-offset:3px;}
+  .btn-primary{background:var(--rose); color:#2A0E16; border-color:var(--rose);}
+  .btn-primary:hover{transform:translateY(-2px);}
+  .btn-ghost{background:transparent; color:var(--snow); border-color:var(--ink-line);}
+  .btn-ghost:hover{border-color:var(--rose); transform:translateY(-2px);}
+
+  /* HERO */
+  .hero{background:var(--ink); color:var(--snow); padding:clamp(28px,6vh,56px) 0 clamp(56px,9vh,96px); overflow:hidden;}
+  .topbar{display:flex; justify-content:space-between; align-items:center; padding-top:6px;}
+  .mark{font-family:"Fraunces",serif; font-weight:600; font-size:1.15rem; color:var(--snow);}
+  .nav{display:flex; gap:1.6rem; font-family:"IBM Plex Mono",monospace; font-size:0.8rem; letter-spacing:0.06em;}
+  .nav a{color:var(--mist); text-decoration:none; transition:color .2s;}
+  .nav a:hover{color:var(--rose);}
+  .hero-grid{display:grid; grid-template-columns:1.25fr 1fr; gap:clamp(28px,5vw,64px); align-items:center; margin-top:clamp(40px,8vh,84px);}
+  .hero h1{font-size:clamp(2.5rem,1.6rem + 4vw,4.6rem); color:var(--snow); max-width:14ch;}
+  .hero h1 .accent{font-style:italic; color:var(--amber);}
+  .hero p.lead{color:var(--mist); font-size:clamp(1.05rem,1rem + 0.4vw,1.3rem); max-width:48ch; margin:1.4rem 0 2rem;}
+  .hero-cta{display:flex; gap:0.8rem; flex-wrap:wrap;}
+
+  /* SIGNATURE curve */
+  .curve{align-self:stretch; display:flex; flex-direction:column; justify-content:center;}
+  .tiles{display:grid; grid-template-columns:repeat(7,1fr); gap:7px; align-items:end; min-height:240px;}
+  .col{display:flex; flex-direction:column-reverse; gap:7px;}
+  .tile{aspect-ratio:1/1; border-radius:7px; background:rgba(255,255,255,0.05); border:1px solid var(--ink-line);}
+  .tile.lit{border-color:transparent; box-shadow:0 6px 18px -8px rgba(236,106,133,0.5);}
+  .curve .caption{display:flex; justify-content:space-between; font-family:"IBM Plex Mono",monospace; font-size:0.72rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--mist); margin-top:16px;}
+  @media (prefers-reduced-motion:no-preference){
+    .tile{opacity:0; transform:translateY(10px) scale(0.6); animation:pop .5s cubic-bezier(.2,.8,.2,1.3) forwards;}
+  }
+  @keyframes pop{to{opacity:1; transform:none;}}
+
+  /* SECTIONS */
+  section{padding:clamp(54px,9vh,100px) 0;}
+  .sec-head{max-width:64ch; margin-bottom:clamp(26px,5vh,48px);}
+  .sec-head h2{font-size:clamp(1.8rem,1.4rem + 1.6vw,2.7rem); margin:0.5rem 0 0;}
+  .sec-head p{margin:0.9rem 0 0; max-width:58ch;}
+
+  /* ABOUT */
+  .about p{max-width:70ch; margin:0 0 1.1rem;}
+  .about p.first{font-size:clamp(1.15rem,1.05rem + 0.5vw,1.5rem); font-family:"Fraunces",serif; font-weight:380; line-height:1.4; color:var(--ink); max-width:30ch;}
+  .about .body{display:grid; grid-template-columns:1fr 1.5fr; gap:clamp(24px,5vw,56px); align-items:start;}
+  .about .recog{font-family:"IBM Plex Mono",monospace; font-size:0.8rem; color:var(--slate); letter-spacing:0.03em; border-top:2px solid var(--rose); padding-top:14px; margin-top:6px;}
+
+  /* THEMES */
+  .themes{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1px; background:var(--paper-2); border:1px solid var(--paper-2); border-radius:16px; overflow:hidden;}
+  .theme{background:var(--paper); padding:clamp(22px,3vw,32px);}
+  .theme .n{font-family:"IBM Plex Mono",monospace; font-size:0.78rem; color:var(--rose);}
+  .theme h3{font-size:1.2rem; margin:0.7rem 0 0.5rem;}
+  .theme p{margin:0; font-size:0.98rem;}
+
+  /* WORK */
+  .work{display:grid; gap:14px;}
+  .card{display:grid; grid-template-columns:210px 1fr; gap:clamp(14px,3vw,38px);
+    background:var(--ink); color:var(--snow); border-radius:16px; padding:clamp(24px,3.5vw,38px); align-items:start;}
+  .card .org{font-family:"Fraunces",serif; font-size:1.35rem; color:var(--snow);}
+  .card .role{font-family:"IBM Plex Mono",monospace; font-size:0.76rem; letter-spacing:0.06em; color:var(--amber); margin-top:0.5rem; text-transform:uppercase;}
+  .card .desc{margin:0; color:var(--snow);}
+  .card .desc b{color:var(--rose); font-weight:600;}
+
+  /* CREATOR BAND */
+  .band{background:var(--ink-2); color:var(--snow); border-radius:20px; padding:clamp(32px,5vw,60px); position:relative;}
+  .band .eyebrow{color:var(--amber);}
+  .band h2{color:var(--snow); font-size:clamp(1.7rem,1.4rem + 1.4vw,2.5rem); max-width:20ch; margin:0.6rem 0 0;}
+  .band p{color:var(--mist); max-width:60ch; margin:1.1rem 0 0;}
+  .band p b{color:var(--snow); font-weight:600;}
+  .band .stud{position:absolute; width:14px; height:14px; border-radius:4px; background:var(--rose); top:28px; right:28px; box-shadow:24px 0 var(--amber), 48px 0 var(--snow);}
+
+  /* WRITING */
+  .featured{display:block; text-decoration:none; background:var(--ink); color:var(--snow);
+    border-radius:16px; padding:clamp(24px,4vw,40px); margin-bottom:36px; border:1px solid var(--ink-line); transition:transform .15s ease, border-color .2s;}
+  .featured:hover{transform:translateY(-2px); border-color:var(--rose);}
+  .featured .eyebrow{color:var(--amber);}
+  .featured h3{color:var(--snow); font-size:clamp(1.4rem,1.1rem + 1vw,2rem); margin:0.6rem 0 0.5rem; max-width:24ch;}
+  .featured .meta{font-family:"IBM Plex Mono",monospace; font-size:0.78rem; color:var(--mist); letter-spacing:0.04em;}
+  .featured p{color:var(--mist); max-width:62ch; margin:0.7rem 0 0;}
+
+  .subhead{font-family:"IBM Plex Mono",monospace; font-size:0.8rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--slate); margin:30px 0 14px;}
+  .pubs{display:grid; gap:0;}
+  .pub{display:block; text-decoration:none; padding:18px 0; border-top:1px solid var(--paper-2);}
+  .pub:hover .pub-t{color:var(--rose);}
+  .pub:last-child{border-bottom:1px solid var(--paper-2);}
+  .pub-t{font-weight:600; color:var(--ink); transition:color .2s;}
+  .pub-d{margin:4px 0 0; font-size:0.96rem; color:var(--slate); max-width:74ch;}
+  .pub-link{font-family:"IBM Plex Mono",monospace; font-size:0.74rem; color:var(--rose); letter-spacing:0.05em; margin-top:6px; display:inline-block;}
+
+  .insights{display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:2px; background:var(--paper-2); border:1px solid var(--paper-2); border-radius:14px; overflow:hidden;}
+  .ins{display:block; text-decoration:none; background:var(--paper); padding:18px 20px; transition:background .2s;}
+  .ins:hover{background:#fff;}
+  .ins .d{font-family:"IBM Plex Mono",monospace; font-size:0.72rem; color:var(--rose); letter-spacing:0.04em;}
+  .ins .t{display:block; color:var(--ink); font-weight:500; margin-top:5px; font-size:0.98rem;}
+
+  /* SPEAKING */
+  .speaking{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:clamp(16px,3vw,30px);}
+  .spk{border-top:2px solid var(--rose); padding-top:12px; font-size:0.98rem; color:var(--ink);}
+  .spk span{display:block; font-family:"IBM Plex Mono",monospace; font-size:0.74rem; color:var(--slate); margin-top:4px;}
+
+  /* CONTACT / FOOTER */
+  .foot{background:var(--ink); color:var(--snow); padding:clamp(54px,9vh,92px) 0 clamp(28px,4vh,40px);}
+  .foot h2{color:var(--snow); font-size:clamp(2rem,1.5rem + 2vw,3.1rem); max-width:18ch;}
+  .foot p.intro{color:var(--mist); max-width:54ch; margin:1.1rem 0 1.8rem;}
+  .cform{display:grid; gap:14px; max-width:520px;}
+  .cform label{font-family:"IBM Plex Mono",monospace; font-size:0.74rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--mist); display:grid; gap:6px;}
+  .cform input,.cform textarea{font-family:"Hanken Grotesk",sans-serif; font-size:1rem; color:var(--snow);
+    background:rgba(255,255,255,0.06); border:1px solid var(--ink-line); border-radius:10px; padding:12px 14px; width:100%;}
+  .cform input:focus,.cform textarea:focus{outline:none; border-color:var(--rose);}
+  .cform button{justify-self:start; margin-top:4px; border:none;}
+  .foot .alt{margin-top:1.4rem; display:flex; gap:0.8rem; flex-wrap:wrap;}
+  .foot .meta{font-family:"IBM Plex Mono",monospace; font-size:0.74rem; color:var(--mist); letter-spacing:0.05em; margin-top:3rem; border-top:1px solid var(--ink-line); padding-top:18px;}
+
+  @media (max-width:820px){
+    .hero-grid{grid-template-columns:1fr;}
+    .curve{order:2; max-width:420px;}
+    .nav{display:none;}
+    .card{grid-template-columns:1fr; gap:10px;}
+    .about .body{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="topbar">
+      <span class="mark">Amanda Dahl</span>
+      <nav class="nav" aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#work">Work</a>
+        <a href="#writing">Writing</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+    <div class="hero-grid">
+      <div>
+        <span class="eyebrow">Technology &amp; public-policy leader · platforms for creation &amp; play</span>
+        <h1>I build platforms that empower people to <span class="accent">create, play and share.</span></h1>
+        <p class="lead">Three decades across PlayStation, the BBC and two governments — creator and developer platforms, personalisation, and responsible AI.</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="#writing">Read my writing</a>
+          <a class="btn btn-ghost" href="#contact">Get in touch</a>
+        </div>
+      </div>
+      <div class="curve" aria-hidden="true">
+        <div class="tiles" id="tiles"></div>
+        <div class="caption"><span>Ease</span><span>Mastery</span></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section id="about" class="about">
+    <div class="wrap">
+      <div class="body">
+        <p class="first">I work at the intersection of digital infrastructure, AI governance and public-sector transformation.</p>
+        <div>
+          <p>I’m a senior technology and public-policy leader with three decades delivering complex, cross-cutting programmes across UK and US government, global technology platforms, and regulated institutions.</p>
+          <p>Today I’m Director of Product at <b>The Crown Estate</b>, leading enterprise digital strategy across a £14 billion national estate — product, data, technology platforms and cybersecurity — and co-chairing the AI Governance Committee, where I set frameworks for responsible AI adoption across the Urban, Rural and Marine portfolios.</p>
+          <p>Previously, as Deputy Director at the <b>UK Government Digital Service</b>, I led seven national programmes and 125+ staff — directing the national launch of the UK Emergency Alerts system to 80% of the population, and overseeing GOV.UK Pay (£7.7bn in transactions) and Notify (11.8bn messages). At the <b>US Digital Service</b> in the Biden White House, I led the national infant-formula crisis response with the Domestic Policy and National Economic Councils, then directed the $190M digital transformation of the USDA’s WIC programme, serving six million mothers and children across 89 state agencies.</p>
+          <p>Earlier I held platform leadership roles at <b>Sony PlayStation</b> (global supply-chain and B2B commerce platforms supporting $4.4bn in revenue) and the <b>BBC</b> (growing signed-in users from 1.9M to 12.6M), on technical foundations spanning high-performance computing, systems architecture, genomics and financial-services infrastructure. I’ve served as UK thematic lead for AI and Digital Democracy at the OECD across nine countries, am a Cambridge Policy Fellow at the Centre for Science and Policy, and advise AI start-ups including Alterion.ai and Lichen AI and the govtech platform AidKit. I recently completed an MSt in AI Ethics &amp; Society at the University of Cambridge, researching how AI-driven prioritisation systems affect agency in public welfare services.</p>
+          <p class="recog">Digital Leader of the Year, Highly Commended (2025) · Women in Tech Role Model of the Year (2024)</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="build" style="background:var(--paper-2);">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">What I build</span>
+        <h2>Systems that meet a five-year-old and an expert team where each of them stands.</h2>
+        <p>Every platform I’ve built is designed to reduce toil and feel self-explanatory — so the first step is easy and the ceiling is high.</p>
+      </div>
+      <div class="themes">
+        <div class="theme"><span class="n">01</span><h3>Creator &amp; developer platforms</h3><p>Tools, services and pipelines that let people build, ship and earn — from novices to studios.</p></div>
+        <div class="theme"><span class="n">02</span><h3>Personalisation &amp; data</h3><p>Identity, recommendation and analytics platforms that turn behaviour into better experiences and sharper decisions.</p></div>
+        <div class="theme"><span class="n">03</span><h3>Responsible &amp; agentic AI</h3><p>AI features and governance built so trust, safety and assurance come first — not as an afterthought.</p></div>
+        <div class="theme"><span class="n">04</span><h3>Ship fast, think long</h3><p>Working MVPs and experiments on short timeframes, inside a multi-year platform strategy I’ve authored end to end.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="work">
+    <div class="wrap">
+      <div class="sec-head"><span class="eyebrow">Selected work</span><h2>A portfolio of platforms at consumer and national scale.</h2></div>
+      <div class="work">
+        <article class="card">
+          <div><div class="org">PlayStation</div><div class="role">Platform product · monetisation &amp; partners</div></div>
+          <p class="desc">Founded PlayStation Partners’ first product organisation — “the home for creators and operators” — with commercial responsibility for a <b>$4.4B revenue stream</b> in virtual goods, subscriptions and codes, and re-platformed the global supply chain into one cloud-native system.</p>
+        </article>
+        <article class="card">
+          <div><div class="org">BBC</div><div class="role">Executive product manager · audience platforms</div></div>
+          <p class="desc">Built the personalisation and identity layer still behind signed-in iPlayer, growing signed-in users from <b>1.9M to 12.6M</b>, and ran the innovation lab — linked-data and digitised-archive experiments among them.</p>
+        </article>
+        <article class="card">
+          <div><div class="org">The Crown Estate</div><div class="role">Director of product · digital, data &amp; AI</div></div>
+          <p class="desc">Author the enterprise digital and AI strategy and co-chair the <b>AI Governance Committee</b>, with a current focus on governing agentic AI — including a working prototype built hands-on.</p>
+        </article>
+        <article class="card">
+          <div><div class="org">Government Digital Service</div><div class="role">Deputy director · products &amp; services</div></div>
+          <p class="desc">Ran the UK’s national platforms — GOV.UK Pay (£7.7B+ processed) and Notify (11.8B+ messages) — and launched the country’s first <b>Emergency Alerts</b> system, reaching 80% of the population.</p>
+        </article>
+        <article class="card">
+          <div><div class="org">The White House</div><div class="role">US Digital Service · product</div></div>
+          <p class="desc">Led national crisis response and service transformation for <b>children and families</b> — the infant-formula shortage response, and the $190M transformation of the WIC programme for six million mothers and children.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="creator" style="background:var(--paper-2);">
+    <div class="wrap">
+      <div class="band">
+        <span class="stud" aria-hidden="true"></span>
+        <span class="eyebrow">A creator, not just a builder</span>
+        <h2>I don’t just build creation platforms — I live in them.</h2>
+        <p>I’ve spent many hours building in PlayStation’s <b>Dreams</b> and fed my experience back to Media Molecule. There’s no better teacher of the balance between creator ease and creator mastery than a sandbox you genuinely love.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="writing">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Writing &amp; publications</span>
+        <h2>On responsible AI, emerging-technology policy and digital public infrastructure.</h2>
+      </div>
+
+      <a class="featured" href="https://www.lcfi.ac.uk/news-events/blog/post/what-does-trauma-sound-like-to-an-algorithm" target="_blank" rel="noopener">
+        <span class="eyebrow">New · essay</span>
+        <h3>What does trauma sound like to an algorithm?</h3>
+        <p class="meta">Leverhulme Centre for the Future of Intelligence (CFI)</p>
+        <p>My latest essay, extending my work on trauma-informed AI and how systems built for scale meet people at their most vulnerable. Read it on the CFI blog →</p>
+      </a>
+
+      <div class="subhead">Papers &amp; essays</div>
+      <div class="pubs">
+        <a class="pub" href="https://www.amandadahl.com/pdfs/equity-test.pdf">
+          <div class="pub-t">The Equity Test: A New Standard for AI in Public Services</div>
+          <p class="pub-d">A policy essay arguing we should ask one question of public-service AI: does this system expand or narrow equity in access, treatment and outcome for the people it affects?</p>
+          <span class="pub-link">PDF →</span>
+        </a>
+        <a class="pub" href="https://www.amandadahl.com/pdfs/intersection-disclosure-scale.pdf">
+          <div class="pub-t">The Intersection of Disclosure and Scale: A Trauma-Informed Approach to AI</div>
+          <p class="pub-d">Introducing a framework for understanding how AI systems affect vulnerable individuals at scale.</p>
+          <span class="pub-link">PDF →</span>
+        </a>
+        <a class="pub" href="https://www.amandadahl.com/pdfs/ai-challengers.pdf">
+          <div class="pub-t">AI Challengers: How AI Regulation Can Stimulate Innovation, Democratise Knowledge and Break Up Digital Monopolies</div>
+          <p class="pub-d">How targeted technical regulation can stimulate, rather than stifle, innovation.</p>
+          <span class="pub-link">PDF →</span>
+        </a>
+        <a class="pub" href="https://www.amandadahl.com/pdfs/menstruation-mens-rea.pdf">
+          <div class="pub-t">From Menstruation to Mens Rea: How AI-mediated Reproductive Data Becomes Entangled with Carceral Systems</div>
+          <p class="pub-d">Using cycle-tracking apps as a case study for understanding AI in datafied reproductive intent.</p>
+          <span class="pub-link">PDF →</span>
+        </a>
+        <a class="pub" href="https://www.amandadahl.com/pdfs/pluralist-human-ai.pdf">
+          <div class="pub-t">A Pluralist Approach to Human-Centred Government AI, with a Focus on Gender-Based Equity</div>
+          <p class="pub-d">Applying complexity theory to propose interventions for a government AI ecosystem that prioritises the needs and rights of all genders.</p>
+          <span class="pub-link">PDF →</span>
+        </a>
+        <a class="pub" href="https://www.amandadahl.com/pdfs/artificial-moral-agents.pdf">
+          <div class="pub-t">The Role of Artificial Moral Agents in Delivering Ethical Public Services</div>
+          <p class="pub-d">On the governance of artificial moral agents as applied to trust in digital public services.</p>
+          <span class="pub-link">PDF →</span>
+        </a>
+        <a class="pub" href="https://www.amandadahl.com/pdfs/power-framing.pdf">
+          <div class="pub-t">The Power of Framing: Big Tech Influence on AI Regulation and Policy Discourse</div>
+          <p class="pub-d">A policy analysis of narrative framing around AI innovation versus regulation.</p>
+          <span class="pub-link">PDF →</span>
+        </a>
+      </div>
+
+      <div class="subhead">Insights</div>
+      <div class="insights">
+        <a class="ins" href="https://www.amandadahl.com/2023/04/23/gov-ontology.html"><span class="d">Apr 2023</span><span class="t">The potential power of a whole-of-government ontology</span></a>
+        <a class="ins" href="https://www.amandadahl.com/2023/04/10/ordeals.html"><span class="d">Apr 2023</span><span class="t">The counter-productive reality of ordeals vs human-centred government services</span></a>
+        <a class="ins" href="https://www.amandadahl.com/2022/11/01/infant-formula.html"><span class="d">Nov 2022</span><span class="t">Infant Formula Shortage</span></a>
+        <a class="ins" href="https://www.amandadahl.com/2021/06/15/jtbd.html"><span class="d">Jun 2021</span><span class="t">Jobs to be Done</span></a>
+        <a class="ins" href="https://www.amandadahl.com/2021/02/02/hiding-complexity.html"><span class="d">Feb 2021</span><span class="t">Hiding Complexity from Users</span></a>
+        <a class="ins" href="https://www.amandadahl.com/2019/07/10/capacity-management.html"><span class="d">Jul 2019</span><span class="t">Capacity management &amp; meticulous feature definition</span></a>
+        <a class="ins" href="https://www.amandadahl.com/2018/12/05/safe-agile-at-scale.html"><span class="d">Dec 2018</span><span class="t">The Ups and Downs of SAFe for Agile at Scale</span></a>
+        <a class="ins" href="https://www.amandadahl.com/2017/01/27/first-post.html"><span class="d">Jan 2017</span><span class="t">So impressed with Estonia’s digital progress</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="speaking" style="background:var(--paper-2);">
+    <div class="wrap">
+      <div class="sec-head"><span class="eyebrow">Speaking &amp; media</span><h2>Selected talks and programmes.</h2></div>
+      <div class="speaking">
+        <div class="spk">University of Copenhagen / Queen Mary Policy Fellows<span>2025</span></div>
+        <div class="spk">Trinity College Cambridge Policy Programme<span>2025</span></div>
+        <div class="spk">Public Service Data Live<span>2024</span></div>
+        <div class="spk">Government Transformation Summit<span>2024</span></div>
+        <div class="spk">Georgetown University Beeck Center<span>2023</span></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot" id="contact">
+  <div class="wrap">
+    <span class="eyebrow">Contact</span>
+    <h2>Let’s talk.</h2>
+    <p class="intro">If you’d like to discuss research, speaking, or collaboration on technology, platforms and responsible AI, send a note.</p>
+    <!-- Set the form endpoint: create a free form at formspree.io and paste its ID,
+         or point action= at your existing handler. -->
+    <form class="cform" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+      <label>Name<input type="text" name="name" required></label>
+      <label>Email<input type="email" name="email" required></label>
+      <label>Message<textarea name="message" rows="4" required></textarea></label>
+      <button class="btn btn-primary" type="submit">Send message</button>
+    </form>
+    <div class="alt">
+      <!-- Update this LinkedIn URL to your exact profile before publishing -->
+      <a class="btn btn-ghost" href="https://www.linkedin.com/in/amandadahl/" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+    <p class="meta">© Amanda Dahl 2026 · All views expressed are personal and do not represent the positions of any current or previous employer.</p>
+  </div>
+</footer>
+
+<script>
+  // Signature: build the ease→mastery curve out of tiles.
+  (function(){
+    var heights=[1,2,2,3,4,5,6];
+    var grid=document.getElementById('tiles');
+    if(!grid) return;
+    heights.forEach(function(h,ci){
+      var col=document.createElement('div'); col.className='col';
+      for(var i=0;i<h;i++){
+        var t=document.createElement('div'); t.className='tile';
+        if(i===h-1){
+          var p=ci/(heights.length-1);
+          var r=Math.round(236+(244-236)*p), g=Math.round(106+(180-106)*p), b=Math.round(133+(63-133)*p);
+          t.classList.add('lit'); t.style.background='rgb('+r+','+g+','+b+')';
+        }
+        t.style.animationDelay=(ci*0.06 + i*0.04)+'s';
+        col.appendChild(t);
+      }
+      grid.appendChild(col);
+    });
+  })();
+</script>
+</body>
+</html>
